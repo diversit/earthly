@@ -12,7 +12,7 @@ buildkitd:
             ARG BUILDKIT_BASE_IMAGE=$BUILDKIT_PROJECT+build
         END
     ELSE
-        ARG BUILDKIT_BASE_IMAGE=github.com/earthly/buildkit:d6934eea96a5358fd4d7991b76e767ad8fbce47a+build
+        ARG BUILDKIT_BASE_IMAGE=github.com/alexcb/buildkit:a41c95d221061354a3d1b6eb437b8a3746849b0f+build
     END
     ARG EARTHLY_TARGET_TAG_DOCKER
     ARG TAG="dev-$EARTHLY_TARGET_TAG_DOCKER"
@@ -59,7 +59,7 @@ buildkitd:
     ARG EARTHLY_GIT_HASH
     ENV EARTHLY_GIT_HASH=$EARTHLY_GIT_HASH
     ENV BUILDKIT_BASE_IMAGE=$BUILDKIT_BASE_IMAGE
-    ENV EARTHLY_CACHE_VERSION="2" # whenever this value changes, a forced cache reset is performed
+    ENV EARTHLY_CACHE_VERSION="3" # whenever this value changes, a forced cache reset is performed
     VOLUME /tmp/earthly
     ENTRYPOINT ["/usr/bin/entrypoint.sh", "buildkitd", "--config=/etc/buildkitd.toml"]
     ARG DOCKERHUB_USER="earthly"
